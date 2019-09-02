@@ -1,0 +1,42 @@
+{
+  "name": "trijournal-server",
+  "version": "1.0.0",
+  "description": "1. 명령형으로 작성. e.g. ✨ Add navigator component 2. 커밋 메시지 앞에 emoji 붙이기([https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/)) 3. 작업 단위 별로 커밋하기. - gitmoji",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoungJInzz/triJournal-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoungJInzz/triJournal-server/issues"
+  },
+  "homepage": "https://github.com/YoungJInzz/triJournal-server#readme",
+  "dependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5"
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "prettier": "1.18.2"
+  },
+  "lint-staged": {
+      "*.{js,jsx}": [
+          "eslint --fix",
+          "git add"
+      ]
+  },
+  "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+  }
+}
