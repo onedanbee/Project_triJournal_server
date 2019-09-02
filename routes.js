@@ -13,11 +13,11 @@ router.post('/users/findId', controller.users.findId);
 
 router.post('/users/findPassword', controller.users.findPassword);
 
-router.post('/users/?userId={id}', controller.post.createPost);
+router.get('/users/:userId', controller.users.getProfile);
+
+router.post('/users/?userId={id}', controller.posts.createPost);
 
 router.get('/users/?userId={id}', controller.posts.getPost);
-
-router.get('/users/:userId', controller.users.getProfile);
 
 router.put('/posts?userId={id}?postId={postId}', controller.posts.edit);
 
