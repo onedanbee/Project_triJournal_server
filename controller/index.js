@@ -1,10 +1,10 @@
-var models = require('../models');
+var sign = require('../models/sign');
 
 module.exports = {
   sign: {
     signin: async function(req, res) {
       try {
-        const data = await models.sign.signin(req.body);
+        const data = await sign.signin(req.body);
         res.status(200);
         res.send(data);
       } catch (err) {
@@ -13,7 +13,7 @@ module.exports = {
     },
     signout: async function(req, res) {
       try {
-        const data = await models.sign.signout(req.body);
+        const data = await sign.signout(req.body);
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -25,7 +25,7 @@ module.exports = {
   users: {
     checkId: async function(req, res) {
       try {
-        const data = await models.users.checkId(req.body);
+        const data = await users.checkId(req.body);
         res.status(200);
         res.send(data);
       } catch (err) {
@@ -34,7 +34,7 @@ module.exports = {
     },
     signUp: async function(req, res) {
       try {
-        const data = await models.users.signUp(req.body);
+        const data = await users.signUp(req.body);
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -43,7 +43,7 @@ module.exports = {
     },
     findId: async function(req, res) {
       try {
-        const data = await models.users.findId(req.body);
+        const data = await users.findId(req.body);
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -52,7 +52,7 @@ module.exports = {
     },
     findPassword: async function(req, res) {
       try {
-        const data = await models.users.findPassword(req.body);
+        const data = await users.findPassword(req.body);
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -61,7 +61,7 @@ module.exports = {
     },
     getProfile: async function(req, res) {
       try {
-        const data = await models.users.getProfile(req.body);
+        const data = await users.getProfile(req.body);
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -73,7 +73,7 @@ module.exports = {
   posts: {
     createPost: async function(req, res) {
       try {
-        const data = await models.posts.createPost(req.body);
+        const data = await posts.createPost(req.body);
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -82,7 +82,7 @@ module.exports = {
     },
     getPost: async function(req, res) {
       try {
-        const data = await models.posts.getPost();
+        const data = await posts.getPost();
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -91,7 +91,7 @@ module.exports = {
     },
     edit: async function(req, res) {
       try {
-        const data = await models.posts.edit(req.body);
+        const data = await posts.edit(req.body);
         res.status(201);
         res.send(data);
       } catch (err) {
@@ -100,7 +100,7 @@ module.exports = {
     },
     deletePost: async function(req, res) {
       try {
-        const data = await models.posts.deletePost();
+        const data = await posts.deletePost();
         res.status(201);
         res.send(data);
       } catch (err) {
