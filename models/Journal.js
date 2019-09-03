@@ -26,5 +26,13 @@ module.exports = sequelize.define('Journal', {
   picUrl: {
     type: Sequelize.STRING(300),
     allowNull: true
+  },
+  classMethods: {
+    associate: function(models) {
+      Journal.belongsTo(models.Users, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE'
+      });
+    }
   }
 });

@@ -19,5 +19,13 @@ module.exports = sequelize.define('User', {
   userProfilePic: {
     type: Sequelize.STRING(1234),
     allowNull: true
+  },
+  classMethods: {
+    associate: function(models) {
+      User.hasMany(models.Journal, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE'
+      });
+    }
   }
 });
