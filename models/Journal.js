@@ -29,7 +29,7 @@ module.exports = sequelize.define('Journal', {
   },
   classMethods: {
     associate: function(models) {
-      Journal.belongsTo(models.Users, {
+      Journal.belongsTo(models.User, {
         foreignKey: 'userId',
         onDelete: 'CASCADE'
       });
