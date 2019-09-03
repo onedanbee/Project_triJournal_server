@@ -25,18 +25,26 @@
     "lint-staged": "^9.2.5"
   },
   "devDependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "prettier": "1.18.2"
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
+    "nodemon": "^1.19.1",
+    "prettier": "1.18.2",
+    "sequelize": "^5.18.0",
+    "sequelize-cli": "^5.5.1"
   },
   "lint-staged": {
-      "*.{js,jsx}": [
-          "eslint --fix",
-          "git add"
-      ]
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "husky": {
-      "hooks": {
-        "pre-commit": "lint-staged"
-      }
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
