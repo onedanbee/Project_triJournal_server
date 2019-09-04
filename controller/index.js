@@ -1,4 +1,4 @@
-var sign = require('../models/sign');
+var sign = require('../models/queries/sign');
 
 module.exports = {
   sign: {
