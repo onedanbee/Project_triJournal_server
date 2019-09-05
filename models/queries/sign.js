@@ -1,10 +1,10 @@
+const express = require('express');
 const parser = require('body-parser');
 const cors = require('cors');
 const session = require('express-session');
 const crypto = require('crypto');
 const User = require('../tables/User');
-const app = require('../../app');
-
+const app = express();
 app.use(
   session({
     secret: '@OBok'
@@ -20,12 +20,11 @@ app.get('/', (req, res) => {
 });
 
 module.exports = {
-  signin: app.post('/sign/signin', (req, res) => {
-    const cryptoPassword = crypto.createHash('sha512').update(req.body.password);
+  signin: (req, res) => {
     return User.findOne({
       where: {
         username: req.body.username,
-        password: cryptoPassword,
+        password: req.body.password,
         attributes: ['id']
       }
     }).then(function(result) {
@@ -36,10 +35,10 @@ module.exports = {
         return { isLogIn: false };
       }
     });
-  }),
-  signout: app.post('/sign/signout', (req, res) => {
+  },
+  signout: (req, res) => {
     req.session.destroy();
     res.redirect('/');
     return { isLogIn: false };
-  })
+  }
 };
