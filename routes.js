@@ -1,4 +1,4 @@
-var controller = require('./controllers');
+var controller = require('./controller');
 var router = require('express').Router();
 
 router.post('/sign/signin', controller.sign.signin);
@@ -15,9 +15,9 @@ router.post('/users/findPassword', controller.users.findPassword);
 
 router.get('/users/:userId', controller.users.getProfile);
 
-router.post('/users/:userId', controller.posts.createPost);
+router.post('/posts/:username', controller.posts.createPost);
 
-router.get('/users/:userId', controller.posts.getPost);
+router.get('/posts/:userId', controller.posts.getPost);
 
 router.put('/posts/:userId/:postId', controller.posts.edit);
 
