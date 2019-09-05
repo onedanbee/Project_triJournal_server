@@ -44,7 +44,7 @@ module.exports = {
       attributes: ['username']
     }).then(function(username) {
       if (username) {
-        return { username: username };
+        return username;
       } else {
         return { username: undefined };
       }
@@ -53,19 +53,19 @@ module.exports = {
   findPassword: (req, res) => {
     const body = req.body;
     return User.findOne({
-      where: { email: body.email }
+      where: { email: body.email },
+      attributes: ['password']
     }).then(function(password) {
       if (password) {
-        return { isPassword: password };
+        return password;
       } else {
         return { isPassword: undefined };
       }
     });
   },
   getProfile: (req, res) => {
-    const body = req.body;
     return User.findOne({
-      where: { username: body.username }
+      where: { username: req.params.username }
     });
   }
 };
