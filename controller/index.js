@@ -1,6 +1,6 @@
 var sign = require('../models/queries/sign');
 var users = require('../models/queries/users');
-var posts = require('../models/queries/post');
+var posts = require('../models/queries/posts');
 module.exports = {
   sign: {
     signin: async function(req, res) {
@@ -83,8 +83,8 @@ module.exports = {
     },
     getPost: async function(req, res) {
       try {
-        const data = await posts.getPost();
-        res.status(201);
+        const data = await posts.getPost(req, res);
+        res.status(200);
         res.send(data);
       } catch (err) {
         console.error(err);
@@ -93,7 +93,7 @@ module.exports = {
     edit: async function(req, res) {
       try {
         const data = await posts.edit(req, res);
-        res.status(201);
+        res.status(200);
         res.send(data);
       } catch (err) {
         console.error(err);
@@ -101,7 +101,7 @@ module.exports = {
     },
     deletePost: async function(req, res) {
       try {
-        const data = await posts.deletePost();
+        const data = await posts.deletePost(req, res);
         res.status(201);
         res.send(data);
       } catch (err) {
