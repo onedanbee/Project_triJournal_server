@@ -8,7 +8,9 @@ const app = express();
 
 app.use(
   session({
-    secret: '@OBok'
+    secret: '@OBok', //쿠키에 저장할 connect.sid 값을 암호화할 키 값 입력
+    resave: false, // 세션 아이디를 접속할 때마다 새롭게 발급하지 않음
+    saveUninitialized: true // 세션 아이디를 실제 사용하기 전에는 발급하지 않음
   })
 );
 

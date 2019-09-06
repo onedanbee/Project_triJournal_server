@@ -34,6 +34,8 @@ module.exports = {
       email: body.email,
       password: body.password,
       userProfilePic: undefined
+    }).then(function() {
+      return { isAccountCreated: true };
     });
   },
   findId: (req, res) => {
