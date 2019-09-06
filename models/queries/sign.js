@@ -5,6 +5,7 @@ const session = require('express-session');
 const crypto = require('crypto');
 const User = require('../tables/User');
 const app = express();
+
 app.use(
   session({
     secret: '@OBok'
