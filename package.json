@@ -4,8 +4,8 @@
   "description": "1. 명령형으로 작성. e.g. ✨ Add navigator component 2. 커밋 메시지 앞에 emoji 붙이기([https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/)) 3. 작업 단위 별로 커밋하기. - gitmoji",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js", 
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
