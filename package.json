@@ -1,0 +1,53 @@
+{
+  "name": "trijournal-server",
+  "version": "1.0.0",
+  "description": "1. 명령형으로 작성. e.g. ✨ Add navigator component 2. 커밋 메시지 앞에 emoji 붙이기([https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/)) 3. 작업 단위 별로 커밋하기. - gitmoji",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoungJInzz/triJournal-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoungJInzz/triJournal-server/issues"
+  },
+  "homepage": "https://github.com/YoungJInzz/triJournal-server#readme",
+  "dependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
+    "nodemon": "^1.19.1",
+    "prettier": "1.18.2",
+    "sequelize": "^5.18.0",
+    "sequelize-cli": "^5.5.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
