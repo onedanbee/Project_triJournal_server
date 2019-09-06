@@ -3,7 +3,7 @@ var router = require('express').Router();
 
 router.post('/sign/signin', controller.sign.signin);
 
-router.post('/sign/signout', controller.sign.signout);
+router.get('/sign/signout', controller.sign.signout);
 
 router.post('/users/checkId', controller.users.checkId);
 

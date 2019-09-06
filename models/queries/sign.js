@@ -1,16 +1,8 @@
 const express = require('express');
 const parser = require('body-parser');
 const cors = require('cors');
-const session = require('express-session');
-const crypto = require('crypto');
-const User = require('../tables/User');
+const User = require('../tables/index').User;
 const app = express();
-
-app.use(
-  session({
-    secret: '@OBok'
-  })
-);
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
@@ -29,6 +21,7 @@ module.exports = {
       },
       attributes: ['id']
     }).then(function(result) {
+      console.log('SESSION: ', req.session);
       if (result) {
         req.session.userId = result.id;
         return { isLogIn: true };
@@ -39,7 +32,7 @@ module.exports = {
   },
   signout: (req, res) => {
     req.session.destroy();
-    res.redirect('/');
+    // res.redirect('/');
     return { isLogIn: false };
   }
 };

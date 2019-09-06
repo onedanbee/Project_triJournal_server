@@ -18,15 +18,25 @@ module.exports = {
       longLog: body.longLog,
       picUrl: body.picUrl,
       userName: req.params.userName
+    }).then(function() {
+      return { isPostCreated: true };
     });
   },
   getPost: (req, res) => {
     return Journal.findAll({
       where: { userName: req.params.userName }
     }).then(function(journal) {
+<<<<<<< HEAD
       if ((req.session, userId)) {
         return journal;
       } else return {};
+=======
+      if (req.session.userId) {
+        return journal;
+      } else {
+        return {};
+      }
+>>>>>>> fd8722317b61c84f33825a69ac4683c5c4d31625
     });
   },
   edit: (req, res) => {
@@ -47,6 +57,8 @@ module.exports = {
   deletePost: (req, res) => {
     Journal.destroy({
       where: { id: req.params.postId }
+    }).then(function() {
+      return { isDeleted: true };
     });
   }
 };
