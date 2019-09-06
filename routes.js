@@ -15,12 +15,12 @@ router.post('/users/findPassword', controller.users.findPassword);
 
 router.get('/users/:userId', controller.users.getProfile);
 
-router.post('/posts/:username', controller.posts.createPost);
+router.post('/posts/:userName', controller.posts.createPost);
 
-router.get('/posts/:userId', controller.posts.getPost);
+router.get('/posts/:userName', controller.posts.getPost);
 
-router.put('/posts/:userId/:postId', controller.posts.edit);
+router.put('/posts/:userName/:postId', controller.posts.edit);
 
-router.delete('/posts/:userId/:postId', controller.posts.deletePost);
+router.delete('/posts/:userName/:postId', controller.posts.deletePost);
 
 module.exports = router;
