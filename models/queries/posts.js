@@ -11,22 +11,38 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 module.exports = {
   createPost: (req, res) => {
     const body = req.body;
-    console.log('BODY: ', body);
     return Journal.create({
       best: body.best,
       worst: body.worst,
       todo: body.todo,
       longLog: body.longLog,
       picUrl: body.picUrl,
-      username: req.params.username
+      userName: req.params.userName
     }).then(journal => res.json(journal));
   },
   getPost: (req, res) => {
-    const body = req.body;
-    // console.log('BODY: ', body);
     return Journal.findAll({
-      where: { id: req.params.userId, username: body.username },
-      attributes: ['id']
-    }).then(journals => res.json(journals));
+      where: { userName: req.params.userName }
+    }).then(journal => res.json(journal));
+  },
+  edit: (req, res) => {
+    const body = req.body;
+    Journal.update(
+      {
+        best: body.best,
+        worst: body.worst,
+        todo: body.todo,
+        longLog: body.longLog,
+        picUrl: body.picUrl,
+        userName: req.params.userName
+      },
+      { where: { id: req.params.postId } }
+    );
+    return Journal.findOne({ where: { id: req.params.postId } });
+  },
+  deletePost: (req, res) => {
+    Journal.destroy({
+      where: { id: req.params.postId }
+    });
   }
 };
