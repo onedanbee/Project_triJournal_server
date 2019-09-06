@@ -20,8 +20,7 @@ const Journal = require('./Journal')(sequelize, Sequelize);
 
 fs.readdirSync(__dirname)
   .filter(file => {
-    console.log(file);
-    return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'; //이부분 무엇인가?
+    return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'; // 무슨뜻인지
   })
   .forEach(file => {
     const model = sequelize['import'](path.join(__dirname, file));
