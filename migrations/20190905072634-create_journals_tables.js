@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.STRING(300),
         allowNull: true
       },
-      username: {
+      userName: {
         type: Sequelize.STRING(35),
         onDelete: 'CASCADE',
         references: {
