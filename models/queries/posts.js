@@ -18,6 +18,8 @@ module.exports = {
       longLog: body.longLog,
       picUrl: body.picUrl,
       userName: req.params.userName
+    }).then(function() {
+      return { isPostCreated: true };
     });
   },
   getPost: (req, res) => {
@@ -45,6 +47,8 @@ module.exports = {
   deletePost: (req, res) => {
     Journal.destroy({
       where: { id: req.params.postId }
+    }).then(function() {
+      return { isDeleted: true };
     });
   }
 };
