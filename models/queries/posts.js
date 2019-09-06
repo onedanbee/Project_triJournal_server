@@ -18,12 +18,14 @@ module.exports = {
       longLog: body.longLog,
       picUrl: body.picUrl,
       userName: req.params.userName
-    }).then(journal => res.json(journal));
+    });
   },
   getPost: (req, res) => {
     return Journal.findAll({
       where: { userName: req.params.userName }
-    }).then(journal => res.json(journal));
+    }).then(function(journal) {
+      return journal;
+    });
   },
   edit: (req, res) => {
     const body = req.body;
