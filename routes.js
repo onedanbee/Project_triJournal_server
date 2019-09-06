@@ -13,7 +13,7 @@ router.post('/users/findId', controller.users.findId);
 
 router.post('/users/findPassword', controller.users.findPassword);
 
-router.get('/users/:userId', controller.users.getProfile);
+router.get('/users/:username', controller.users.getProfile);
 
 router.post('/posts/:username', controller.posts.createPost);
 
