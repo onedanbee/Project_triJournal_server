@@ -21,4 +21,4 @@
 - ➕(heavy_plus_sign): 디펜던시 추가
 - ➖(heavy_minus_sign): 디펜던시 삭제
 - 💩(poop): 앞으로 수정해야 할 나쁜 코드!
-- 👌(ok_hand): 코드 리뷰 후 코드 수정
+- 👌(ok_hand): 코드 리뷰 후 코드 수정.
