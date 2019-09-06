@@ -28,6 +28,9 @@ module.exports = (sequelize, type) => {
       picUrl: {
         type: Sequelize.STRING(300),
         allowNull: true
+      },
+      userName: {
+        type: Sequelize.STRING(35)
       }
     },
     {
