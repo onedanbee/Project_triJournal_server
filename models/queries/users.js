@@ -29,7 +29,6 @@ module.exports = {
 
   signUp: (req, res) => {
     const body = req.body;
-    console.log('aaaaaaaaaaaaaaaaaaaaaa', body);
     return User.create({
       username: body.username,
       email: body.email,
