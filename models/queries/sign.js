@@ -25,9 +25,9 @@ module.exports = {
     return User.findOne({
       where: {
         username: req.body.username,
-        password: req.body.password,
-        attributes: ['id']
-      }
+        password: req.body.password
+      },
+      attributes: ['id']
     }).then(function(result) {
       if (result) {
         req.session.userId = result.id;

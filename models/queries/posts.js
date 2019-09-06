@@ -24,7 +24,9 @@ module.exports = {
     return Journal.findAll({
       where: { userName: req.params.userName }
     }).then(function(journal) {
-      return journal;
+      if ((req.session, userId)) {
+        return journal;
+      } else return {};
     });
   },
   edit: (req, res) => {
