@@ -34,5 +34,12 @@ module.exports = {
     req.session.destroy();
     // res.redirect('/');
     return { isLogIn: false };
+  },
+  checkSign: (req, res) => {
+    if (req.session.userId) {
+      return { isLogIn: true };
+    } else {
+      return { isLogIn: false };
+    }
   }
 };
