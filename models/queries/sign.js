@@ -24,6 +24,7 @@ module.exports = {
       console.log('SESSION: ', req.session);
       if (result) {
         req.session.userId = result.id;
+        req.session.save();
         return { isLogIn: true };
       } else {
         return { isLogIn: false };
