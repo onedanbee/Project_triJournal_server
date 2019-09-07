@@ -20,6 +20,15 @@ module.exports = {
       } catch (err) {
         console.error(err);
       }
+    },
+    checkSign: async function(req, res) {
+      try {
+        const data = await sign.checkSign(req, res);
+        res.status(201);
+        res.send(data);
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
 
