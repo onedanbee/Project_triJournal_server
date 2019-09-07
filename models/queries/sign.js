@@ -37,9 +37,9 @@ module.exports = {
   },
   checkSign: (req, res) => {
     if (req.session.userId) {
-      return { isLogIn: true };
+      return { sessionId: req.session.userId };
     } else {
-      return { isLogIn: false };
+      return { isSession: false };
     }
   }
 };
