@@ -16,8 +16,8 @@
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
-    "host": "http://18.218.3.251",
+    "database": "triJournal",
+    "host": "http://127.0.0.1",
     "dialect": "mysql"
   }
 }
