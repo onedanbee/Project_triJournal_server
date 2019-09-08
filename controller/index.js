@@ -1,6 +1,7 @@
 var sign = require('../models/queries/sign');
 var users = require('../models/queries/users');
 var posts = require('../models/queries/posts');
+
 module.exports = {
   sign: {
     signin: async function(req, res) {
