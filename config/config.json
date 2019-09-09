@@ -17,7 +17,7 @@
     "username": "root",
     "password": null,
     "database": "triJournal",
-    "host": "http://18.218.3.251",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
