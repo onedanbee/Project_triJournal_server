@@ -21,6 +21,8 @@ router.post('/posts/:userName', controller.posts.createPost);
 
 router.get('/posts/:userName', controller.posts.getPost);
 
+router.post('/posts/picture', controller.posts.postPicture);
+
 router.put('/posts/:userName/:postId', controller.posts.edit);
 
 router.delete('/posts/:userName/:postId', controller.posts.deletePost);

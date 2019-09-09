@@ -8,7 +8,7 @@ module.exports = {
       try {
         const data = await sign.signin(req, res); //req => req,res
         res.status(200);
-        res.send(data);
+        res.redirect('/search');
       } catch (err) {
         console.error(err);
       }
@@ -113,6 +113,15 @@ module.exports = {
       try {
         const data = await posts.deletePost(req, res);
         res.status(201);
+        res.send(data);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    postPicture: async function(req, res) {
+      try {
+        const data = await posts.postPicture(req, res);
+        res.status(200);
         res.send(data);
       } catch (err) {
         console.error(err);
