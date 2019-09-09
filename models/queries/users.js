@@ -2,6 +2,7 @@ const express = require('express');
 const parser = require('body-parser');
 const cors = require('cors');
 const User = require('../tables/index').User;
+
 const app = express();
 
 app.use(parser.json());

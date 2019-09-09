@@ -29,7 +29,7 @@ module.exports = {
       if (req.session.userId) {
         return journal;
       } else {
-        return {};
+        return [];
       }
     });
   },

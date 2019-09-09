@@ -23,8 +23,6 @@ module.exports = {
     }).then(function(result) {
       if (result) {
         req.session.userId = result.id;
-        req.session.save();
-        res.cookie('user', OBok, { maxAge: 100000 });
         return { isLogIn: true };
       } else {
         return { isLogIn: false };
