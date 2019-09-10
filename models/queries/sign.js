@@ -38,18 +38,19 @@ app.get('/', (req, res) => {
 
 module.exports = {
   signin: (req, res) => {
+    console.log('aaaaaaaaaaaaaaaaa');
     return User.findOne({
       where: {
         username: req.body.username,
         password: req.body.password
-      },
-      attributes: ['id']
+      }
     }).then(function(result) {
-      if (result) {
-        let payload = { id: result.id };
-        let token = jwt.sign(payload, jwtOptions.secretOrKey);
-        passport.authenticate('jwt', { session: false });
-        return { isLogIn: true, token: token };
+      console.log('bbbbbbbb', result.username);
+      if (result.username) {
+        // let payload = { id: result.id };
+        // let token = jwt.sign(payload, jwtOptions.secretOrKey);
+        // passport.authenticate('jwt', { session: false });
+        return { isLogIn: true };
       } else {
         return { isLogIn: false };
       }

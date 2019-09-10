@@ -8,7 +8,7 @@ module.exports = {
       try {
         const data = await sign.signin(req, res); //req => req,res
         res.status(200);
-        res.redirect('/search');
+        res.send(data);
       } catch (err) {
         console.error(err);
       }
