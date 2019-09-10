@@ -50,6 +50,10 @@ module.exports = {
         let payload = { id: result.id };
         let token = jwt.sign(payload, jwtOptions.secretOrKey);
         passport.authenticate('jwt', { session: false });
+        res.setHeader(
+          'Access-Control-Allow-Headers',
+          'X-Requested-With,content-type, Authorization'
+        );
         return { isLogIn: true, token: token };
       } else {
         return { isLogIn: false };

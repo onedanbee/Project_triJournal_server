@@ -3,6 +3,7 @@ const parser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const Journal = require('../tables/index').Journal;
+const auth = require('../../middleware/auth');
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
@@ -23,10 +24,12 @@ module.exports = {
     });
   },
   getPost: (req, res) => {
+    let tokenValidation = auth(req, res);
+    console.log(tokenValidation);
     return Journal.findAll({
       where: { userName: req.params.userName }
     }).then(function(journal) {
-      if (req.session.userId) {
+      if (tokenValidation.id) {
         return journal;
       } else {
         return [];
