@@ -117,15 +117,6 @@ module.exports = {
       } catch (err) {
         console.error(err);
       }
-    },
-    postPicture: async function(req, res) {
-      try {
-        const data = await posts.postPicture(req, res);
-        res.status(200);
-        res.send(data);
-      } catch (err) {
-        console.error(err);
-      }
     }
   }
 };

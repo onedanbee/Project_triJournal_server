@@ -3,12 +3,15 @@ const parser = require('body-parser');
 const cors = require('cors');
 const User = require('../tables/index').User;
 const app = express();
+const jwt = require('jsonwebtoken');
+
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.get('/', (req, res) => {
   res.status(200).send('Success');
 });
+
 module.exports = {
   signin: (req, res) => {
     return User.findOne({
@@ -19,16 +22,11 @@ module.exports = {
       attributes: ['id']
     }).then(function(result) {
       if (result) {
-        console.log('login is allowed login is allowed login is allowed');
-        req.session.userId = result.id;
         return { isLogIn: true };
-      } else {
-        return { isLogIn: false };
       }
     });
   },
   signout: (req, res) => {
-    req.session.destroy();
     // res.redirect('/');
     return { isLogIn: false };
   },

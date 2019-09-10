@@ -1,2 +1,2 @@
 node_modules/ 
-./config/awsconfig.json
+/services/config-profilepic.json

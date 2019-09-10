@@ -3,23 +3,6 @@ const parser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const Journal = require('../tables/index').Journal;
-const multer = require('multer');
-const multerS3 = require('multer-s3');
-const AWS = require('aws-sdk');
-AWS.config.loadFromPath(__dirname + '/../../config/awsconfig.json');
-
-let s3 = new AWS.S3();
-
-let upload = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: 'tirjournal-picture',
-    key: function(req, file, cb) {
-      cb(null, Data.now().toString());
-    },
-    acl: 'public-read-write'
-  })
-});
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
@@ -43,11 +26,7 @@ module.exports = {
     return Journal.findAll({
       where: { userName: req.params.userName }
     }).then(function(journal) {
-      if (req.session.userId) {
-        return journal;
-      } else {
-        return [];
-      }
+      return journal;
     });
   },
   edit: (req, res) => {
@@ -71,12 +50,5 @@ module.exports = {
     }).then(function() {
       return { isDeleted: true };
     });
-  },
-  postPicture: (req, res) => {
-    upload.single('file'),
-      function(req, res) {
-        // let imgFile = req.file;
-        console.log(req);
-      };
   }
 };
