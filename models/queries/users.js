@@ -27,7 +27,6 @@ module.exports = {
       }
     });
   },
-
   signUp: (req, res) => {
     const body = req.body;
     return User.create({
