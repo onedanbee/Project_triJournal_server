@@ -6,6 +6,7 @@ const app = express();
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
 const jwt = require('jsonwebtoken');
+const auth = require('../../middleware/auth');
 
 const getUser = async obj => {
   return await User.findOne({ where: obj });
@@ -61,7 +62,10 @@ module.exports = {
     });
   },
   signout: (req, res) => {
-    return { isLogIn: false };
+    let tokenValidation = auth(req, res);
+    if (tokenValidation.id) {
+      return { isLogIn: false };
+    }
   },
   checkSign: (req, res) => {
     if (req.session.userId) {
