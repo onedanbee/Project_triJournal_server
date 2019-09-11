@@ -1,7 +1,6 @@
 var controller = require('./controller');
 var router = require('express').Router();
 const uploadProfilePic = require('./services/file-upload-profilepic');
-const upload
 
 router.post('/sign/signin', controller.sign.signin);
 
@@ -20,10 +19,6 @@ router.post('/users/findPassword', controller.users.findPassword);
 router.get('/users/:username', controller.users.getProfile);
 
 router.post('/users/:username/postUserProfilePic', uploadProfilePic.single('image'), (req, res) => {
-  return res.json({ imageUrl: req.file.location });
-});
-
-router.post('/posts/:userName/postJournalPic', uploadProfilePic.single('image'), (req, res) => {
   return res.json({ imageUrl: req.file.location });
 });
 
