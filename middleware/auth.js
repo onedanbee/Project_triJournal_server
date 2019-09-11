@@ -6,7 +6,7 @@ const authMiddleware = (req, res) => {
   if (!token) {
     return res.status(403).json({
       success: false,
-      message: 'not logged in'
+      message: 'you do not have the valid token'
     });
   }
 
