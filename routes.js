@@ -1,12 +1,14 @@
-var controller = require('./controller');
-var router = require('express').Router();
+const controller = require('./controller');
+const router = require('express').Router();
 const uploadProfilePic = require('./services/file-upload-profilepic');
+const uploadJournalPic = require('./services/file-upload-journalpic');
+const auth = require('./middleware/auth');
+
+router.use('/test', auth);
 
 router.post('/sign/signin', controller.sign.signin);
 
 router.get('/sign/signout', controller.sign.signout);
-
-router.get('/sign/checksign', controller.sign.checkSign);
 
 router.post('/users/checkId', controller.users.checkId);
 
@@ -25,6 +27,10 @@ router.post('/users/:username/postUserProfilePic', uploadProfilePic.single('imag
 router.post('/posts/:userName', controller.posts.createPost);
 
 router.get('/posts/:userName', controller.posts.getPost);
+
+router.post('/posts/:username/postJournalPic', uploadJournalPic.single('image'), (req, res) => {
+  return res.json({ imageUrl: req.file.location });
+});
 
 router.put('/posts/:userName/:postId', controller.posts.edit);
 
