@@ -78,6 +78,15 @@ module.exports = {
       } catch (err) {
         console.error(err);
       }
+    },
+    uploadprofilepic:async function(req,res){
+      try{
+        const data =await users.uploadprofilepic(req,res);
+        res.status(201);
+        res.send(data)
+      }catch(err){
+        console.error(err)
+      }
     }
   },
 

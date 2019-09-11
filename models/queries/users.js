@@ -2,7 +2,6 @@ const express = require('express');
 const parser = require('body-parser');
 const cors = require('cors');
 const User = require('../tables/index').User;
-
 const app = express();
 
 app.use(parser.json());
@@ -33,7 +32,7 @@ module.exports = {
       username: body.username,
       email: body.email,
       password: body.password,
-      userProfilePic: undefined
+      userProfilePic: body.userProfilePic
     }).then(function() {
       return { isAccountCreated: true };
     });
@@ -68,5 +67,13 @@ module.exports = {
     return User.findOne({
       where: { username: req.params.username }
     });
+  },
+  uploadprofilepic: (req, res) => {
+    User.Journal.update(
+      {
+        userProfilePic: req.file.location
+      },
+      { where: { id: req.params.postId } }
+    );
   }
 };

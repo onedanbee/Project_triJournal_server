@@ -33,19 +33,18 @@ app.use(passport.initialize());
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
-
 app.get('/', (req, res) => {
   res.status(200).send('Success');
 });
 
 module.exports = {
   signin: (req, res) => {
+    console.log('aaaaaaaaaaaaaaaaa');
     return User.findOne({
       where: {
         username: req.body.username,
         password: req.body.password
-      },
-      attributes: ['id']
+      }
     }).then(function(result) {
       if (result) {
         let payload = { id: result.id };

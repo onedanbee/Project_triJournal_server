@@ -11,7 +11,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 module.exports = {
   createPost: (req, res) => {
     const body = req.body;
-    return Journal.create({
+    Journal.create({
       best: body.best,
       worst: body.worst,
       todo: body.todo,

@@ -20,7 +20,7 @@ router.post('/users/findPassword', controller.users.findPassword);
 
 router.get('/users/:username', controller.users.getProfile);
 
-router.post('/users/:username/postUserProfilePic', uploadProfilePic.single('image'), (req, res) => {
+router.post('/users/postUserProfilePic', uploadProfilePic.single('image'), (req, res) => {
   return res.json({ imageUrl: req.file.location });
 });
 
