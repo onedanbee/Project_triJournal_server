@@ -6,6 +6,7 @@ const app = express();
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
 const jwt = require('jsonwebtoken');
+const auth = require('../../middleware/auth');
 
 const getUser = async obj => {
   return await User.findOne({ where: obj });
@@ -50,24 +51,17 @@ module.exports = {
         let payload = { id: result.id };
         let token = jwt.sign(payload, jwtOptions.secretOrKey);
         passport.authenticate('jwt', { session: false });
-        res.setHeader(
-          'Access-Control-Allow-Headers',
-          'X-Requested-With,content-type, Authorization'
-        );
-        return { isLogIn: true, token: token };
+        res.setHeader('x-access-token', token);
+        return { isLogIn: true };
       } else {
         return { isLogIn: false };
       }
     });
   },
   signout: (req, res) => {
-    return { isLogIn: false };
-  },
-  checkSign: (req, res) => {
-    if (req.session.userId) {
-      return { sessionId: req.session.userId };
-    } else {
-      return { isSession: false };
+    let tokenValidation = auth(req, res);
+    if (tokenValidation.id) {
+      return { isLogIn: false };
     }
   }
 };

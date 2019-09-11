@@ -10,8 +10,6 @@ router.post('/sign/signin', controller.sign.signin);
 
 router.get('/sign/signout', controller.sign.signout);
 
-router.get('/sign/checksign', controller.sign.checkSign);
-
 router.post('/users/checkId', controller.users.checkId);
 
 router.post('/users/signUp', controller.users.signUp);
