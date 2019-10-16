@@ -1,9 +1,14 @@
-var controller = require('./controller');
-var router = require('express').Router();
+const controller = require('./controller');
+const router = require('express').Router();
+const uploadProfilePic = require('./services/file-upload-profilepic');
+const uploadJournalPic = require('./services/file-upload-journalpic');
+const auth = require('./middleware/auth');
+
+router.use('/test', auth);
 
 router.post('/sign/signin', controller.sign.signin);
 
-router.post('/sign/signout', controller.sign.signout);
+router.get('/sign/signout', controller.sign.signout);
 
 router.post('/users/checkId', controller.users.checkId);
 
@@ -15,12 +20,20 @@ router.post('/users/findPassword', controller.users.findPassword);
 
 router.get('/users/:username', controller.users.getProfile);
 
-router.post('/posts/:username', controller.posts.createPost);
+router.post('/users/postUserProfilePic', uploadProfilePic.single('image'), (req, res) => {
+  return res.json({ imageUrl: req.file.location });
+});
 
-router.get('/posts/:userId', controller.posts.getPost);
+router.post('/posts/:userName', controller.posts.createPost);
 
-router.put('/posts/:userId/:postId', controller.posts.edit);
+router.get('/posts/:userName', controller.posts.getPost);
 
-router.delete('/posts/:userId/:postId', controller.posts.deletePost);
+router.post('/posts/:username/postJournalPic', uploadJournalPic.single('image'), (req, res) => {
+  return res.json({ imageUrl: req.file.location });
+});
+
+router.put('/posts/:userName/:postId', controller.posts.edit);
+
+router.delete('/posts/:userName/:postId', controller.posts.deletePost);
 
 module.exports = router;

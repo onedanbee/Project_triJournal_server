@@ -32,6 +32,7 @@ module.exports = (sequelize, type) => {
       classMethods: {
         associate: function(models) {
           User.hasMany(models.Journal, {
+            foreignKey: 'userName',
             onDelete: 'CASCADE'
           });
         }

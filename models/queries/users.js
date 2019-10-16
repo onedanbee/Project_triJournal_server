@@ -26,15 +26,15 @@ module.exports = {
       }
     });
   },
-
   signUp: (req, res) => {
     const body = req.body;
-    console.log('aaaaaaaaaaaaaaaaaaaaaa', body);
     return User.create({
       username: body.username,
       email: body.email,
       password: body.password,
-      userProfilePic: undefined
+      userProfilePic: body.userProfilePic
+    }).then(function() {
+      return { isAccountCreated: true };
     });
   },
   findId: (req, res) => {
@@ -67,5 +67,13 @@ module.exports = {
     return User.findOne({
       where: { username: req.params.username }
     });
+  },
+  uploadprofilepic: (req, res) => {
+    User.Journal.update(
+      {
+        userProfilePic: req.file.location
+      },
+      { where: { id: req.params.postId } }
+    );
   }
 };
