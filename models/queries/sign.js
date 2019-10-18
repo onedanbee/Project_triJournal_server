@@ -17,7 +17,7 @@ let JwtStrategy = passportJWT.Strategy;
 let jwtOptions = {};
 
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = '@OBok';
+jwtOptions.secretOrKey = ' <your secret key> ';
 
 let strategy = new JwtStrategy(jwtOptions, (jwt_payload, next) => {
   let user = getUser({ id: jwt_payload.id });
