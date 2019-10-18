@@ -1,4 +1,4 @@
-# triJournal-client
+# triJournal-server
 
 ### **Git rules**
 
