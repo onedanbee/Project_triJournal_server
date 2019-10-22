@@ -20,7 +20,7 @@ module.exports = {
       attributes: ['id']
     }).then(function(name) {
       if (name) {
-        return { isName: true }; //중복아이디 체크 true/false값 반환
+        return { isName: true };
       } else {
         return { isName: false };
       }
@@ -40,7 +40,7 @@ module.exports = {
   findId: (req, res) => {
     const body = req.body;
     return User.findOne({
-      where: { email: body.email }, //이메일을 받아 username을 반환 없으면 undefined
+      where: { email: body.email },
       attributes: ['username']
     }).then(function(username) {
       if (username) {

@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res) => {
-  const token = req.headers['x-access-token'] || req.query.token || req.body.token;
+  const token =
+    req.headers['x-access-token'] || req.query.token || req.body.token;
 
   if (!token) {
     return res.status(403).json({
@@ -10,7 +11,7 @@ const authMiddleware = (req, res) => {
     });
   }
 
-  const p = jwt.verify(token, '@OBok');
+  const p = jwt.verify(token, ' <your secret key> ');
 
   return p;
 };

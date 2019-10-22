@@ -37,8 +37,7 @@ module.exports = (sequelize, type) => {
       classMethods: {
         associate: function(models) {
           Journal.belongsTo(models.User, {
-            //User는 파일명
-            foreignKey: 'username', //foreingKey의 key값이 username
+            foreignKey: 'username',
             onDelete: 'CASCADE'
           });
         }

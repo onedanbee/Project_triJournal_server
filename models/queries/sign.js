@@ -39,7 +39,6 @@ app.get('/', (req, res) => {
 
 module.exports = {
   signin: (req, res) => {
-    console.log('aaaaaaaaaaaaaaaaa');
     return User.findOne({
       where: {
         username: req.body.username,
